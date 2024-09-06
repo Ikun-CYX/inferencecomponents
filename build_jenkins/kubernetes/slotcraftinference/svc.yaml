@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: slotcraftinference
+  namespace: rgs
+  labels:
+    name: slotcraftinference
+spec:
+  type: ClusterIP             #创建service关联deployment
+  selector:
+    name: slotcraftinference
+  ports:
+  - name: slotcraftinference
+    port: 8050
+    targetPort: 8050

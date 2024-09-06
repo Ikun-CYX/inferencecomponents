@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slotcraftinference
+  namespace: rgs
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    name: slotcraftinference
+  template:
+    metadata:
+      labels:
+        name: slotcraftinference            #创建deployment
+    spec:
+      containers:
+      - name: slotcraftinference
+        image: harbor.rgstest.blugurugames.com/game/slotcraftinference/slotcraftinference:latest
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: rgsregistry
+      restartPolicy: Always
